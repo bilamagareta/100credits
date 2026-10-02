@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1226">
+<title>100 Kredit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1226; --bg2:#0f1a36; --card:#14214a; --card-hi:#1a2b5e;
+  --line:rgba(243,234,214,.12); --line-hi:rgba(243,234,214,.22);
+  --cream:#f3ead6; --muted:#a3adc8; --dim:#6f7a98;
+  --gold:#e4b95f; --gold-soft:rgba(228,185,95,.14); --gold-line:rgba(228,185,95,.55);
+  --serif:"Fraunces", Georgia, "Times New Roman", serif;
+  --sans:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{
+  font-family:var(--sans); color:var(--cream); background:var(--bg);
+  background-image:
+    radial-gradient(120% 60% at 50% -10%, rgba(228,185,95,.13), transparent 60%),
+    radial-gradient(90% 50% at 100% 100%, rgba(70,100,200,.16), transparent 60%),
+    linear-gradient(180deg, var(--bg2), var(--bg));
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  font-size:17px; line-height:1.6;
+}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;
+  padding:0 18px calc(24px + env(safe-area-inset-bottom))}
+.screen{flex:1;display:flex;flex-direction:column;animation:enter .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- buttons ---------- */
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;border-radius:14px;
+  font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:15px;transition:transform .15s, background .2s, opacity .2s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:linear-gradient(180deg,#f0c873,#d9a845);color:#1a1405;box-shadow:0 8px 28px rgba(228,185,95,.22)}
+.btn-ghost{border:1px solid var(--line-hi);color:var(--cream);letter-spacing:.12em}
+.btn + .btn{margin-top:12px}
+.icon-btn{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line);flex-shrink:0}
+.icon-btn span{display:block;width:4px;height:4px;border-radius:50%;background:var(--cream);box-shadow:0 -7px 0 var(--cream),0 7px 0 var(--cream)}
+
+/* ---------- landing ---------- */
+.landing{justify-content:center;text-align:center;padding:40px 0 8px}
+.eyebrow{font-size:12px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;font-weight:600}
+.logo{font-family:var(--serif);font-weight:700;font-size:clamp(64px,22vw,96px);line-height:.9;letter-spacing:-.02em;margin:18px 0 6px}
+.logo small{display:block;font-family:var(--sans);font-size:15px;letter-spacing:.5em;font-weight:600;color:var(--gold);margin-top:14px;padding-left:.5em}
+.tagline{font-family:var(--serif);font-size:24px;line-height:1.3;color:var(--cream);margin:28px auto 0;max-width:310px;font-style:italic;font-weight:500}
+.coin{width:86px;height:86px;margin:0 auto;border-radius:50%;border:1px solid var(--gold-line);display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,rgba(228,185,95,.25),transparent 65%);position:relative}
+.coin::after{content:"";position:absolute;inset:8px;border-radius:50%;border:1px dashed rgba(228,185,95,.35)}
+.coin b{font-family:var(--serif);font-size:30px;color:var(--gold)}
+.intro-copy{margin:34px auto 0;max-width:330px;color:var(--muted);font-size:16.5px}
+.intro-copy p + p{margin-top:14px}
+.intro-copy strong{color:var(--cream);font-weight:600}
+.landing-actions{margin-top:auto;padding-top:36px}
+.fine{font-size:13.5px;color:var(--dim);margin-top:16px;text-align:center}
+
+/* ---------- setup ---------- */
+.setup{padding-top:48px}
+.setup h2{font-family:var(--serif);font-size:32px;font-weight:500;line-height:1.2}
+.field-label{display:block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:34px 0 10px;font-weight:600}
+.name-input{width:100%;min-height:58px;border-radius:14px;border:1px solid var(--line-hi);background:rgba(10,18,38,.6);
+  color:var(--cream);font:inherit;font-size:20px;padding:0 18px;outline:none;transition:border-color .2s}
+.name-input:focus{border-color:var(--gold-line)}
+.name-input::placeholder{color:var(--dim)}
+.credit-hero{margin:40px 0 0;padding:26px;border-radius:20px;border:1px solid var(--line);background:rgba(20,33,74,.5);text-align:center}
+.credit-hero .lbl{font-size:12px;letter-spacing:.32em;color:var(--gold);font-weight:600}
+.credit-hero .num{font-family:var(--serif);font-size:72px;line-height:1;margin-top:8px;font-weight:700}
+.credit-hero .sub{font-size:14px;color:var(--muted);margin-top:10px}
+.week-lines{margin:34px 0 0;font-family:var(--serif);font-size:23px;line-height:1.45;font-weight:500}
+.week-lines span{display:block}
+.week-lines span:last-child{color:var(--gold);font-style:italic}
+
+/* ---------- game header ---------- */
+.hud{position:sticky;top:0;z-index:5;margin:0 -18px;padding:calc(10px + env(safe-area-inset-top)) 18px 12px;
+  display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,rgba(10,18,38,.96) 70%,rgba(10,18,38,0));backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hud-mid{flex:1;min-width:0}
+.hud-story{font-size:12.5px;letter-spacing:.2em;font-weight:700;color:var(--muted)}
+.hud-story b{color:var(--cream)}
+.dots{display:flex;gap:4px;margin-top:7px}
+.dots i{flex:1;height:4px;border-radius:2px;background:rgba(243,234,214,.12)}
+.dots i.on{background:var(--gold)}
+.dots i.now{background:linear-gradient(90deg,var(--gold),rgba(228,185,95,.35))}
+
+/* ---------- story ---------- */
+.story{padding-top:8px}
+.when{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.2em;font-weight:700;color:var(--gold);
+  border:1px solid var(--gold-line);border-radius:999px;padding:6px 12px;align-self:flex-start}
+.when::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.story-title{font-family:var(--serif);font-size:30px;line-height:1.15;font-weight:500;margin:14px 0 18px}
+.nar{margin:0 0 12px;color:var(--cream)}
+.think{font-style:italic;color:var(--muted);margin:0 0 12px;padding-left:14px;border-left:2px solid var(--line-hi)}
+.quiet{color:var(--muted);font-size:15.5px;margin:4px 0 12px}
+.say{margin:6px 0 14px;padding:14px 16px;border-radius:14px;background:rgba(243,234,214,.05);border:1px solid var(--line)}
+.say .who{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.say p{font-family:var(--serif);font-size:18.5px;line-height:1.45;font-weight:500}
+.chat{margin:6px 0 12px;max-width:88%}
+.chat .from{font-size:12px;color:var(--muted);margin:0 0 4px 4px;font-weight:600}
+.chat .bubble{display:inline-block;padding:11px 15px;border-radius:4px 18px 18px 18px;background:#1d2d5c;border:1px solid var(--line);font-size:16.5px;line-height:1.45}
+.cal{list-style:none;margin:4px 0 14px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cal li{padding:11px 16px;border-top:1px solid var(--line);font-size:16px;display:flex;gap:10px}
+.cal li:first-child{border-top:0}
+.cal li b{color:var(--gold);font-weight:600;min-width:76px}
+.prompt{margin:22px 0 12px;font-size:12.5px;letter-spacing:.22em;color:var(--muted);font-weight:700;text-transform:uppercase}
+
+.choices{display:flex;flex-direction:column;gap:10px;padding-bottom:8px}
+.choice{position:relative;display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding:15px 16px 15px 14px;text-align:left;
+  border-radius:var(--radius);border:1px solid var(--line);background:rgba(20,33,74,.72);
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .3s,border-color .25s,background .25s}
+.choice:not(:disabled):active{transform:scale(.985);background:var(--card-hi)}
+.choice .letter{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:700;
+  border:1px solid var(--line-hi);color:var(--muted);transition:background .25s,color .25s}
+.choice .txt{flex:1;font-size:16.5px;line-height:1.4;font-weight:500}
+.choice.picked{border-color:var(--gold);background:linear-gradient(180deg,rgba(228,185,95,.18),rgba(228,185,95,.06));transform:scale(1.02)}
+.choice.picked .letter{background:var(--gold);color:#1a1405;border-color:var(--gold)}
+.choice.faded{opacity:.28}
+
+/* ---------- outcome ---------- */
+.picked-recap{padding:14px 16px;border-radius:14px;border:1px solid var(--gold-line);background:var(--gold-soft);margin:6px 0 22px}
+.picked-recap .k{font-size:11.5px;letter-spacing:.2em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.picked-recap .t{font-weight:600;font-size:16px;line-height:1.4;margin-top:2px}
+.outcome .blocks > *{animation:enter .5s both}
+.outcome .blocks > *:nth-child(2){animation-delay:.12s}
+.outcome .blocks > *:nth-child(3){animation-delay:.24s}
+.outcome .blocks > *:nth-child(4){animation-delay:.36s}
+.outcome .blocks > *:nth-child(n+5){animation-delay:.48s}
+.spacer{flex:1;min-height:24px}
+
+/* ---------- blackout / ending ---------- */
+.blackout{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity 1.2s ease;z-index:50}
+.blackout.on{opacity:1;pointer-events:auto}
+body.night{background:#05070f}
+.ending{justify-content:center;padding:60px 4px 0}
+.reveal > *{opacity:0;animation:rise .9s ease forwards;animation-delay:calc(var(--i) * .85s)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ending h1{font-family:var(--serif);font-size:38px;font-weight:700;line-height:1.1;letter-spacing:.01em;margin-bottom:34px}
+.ending p{font-size:19px;color:var(--muted);margin-bottom:14px}
+.ending p.em{color:var(--cream);font-family:var(--serif);font-size:22px;line-height:1.4}
+.ending .btn{margin-top:40px}
+
+/* ---------- results ---------- */
+.results{padding-top:12px}
+.res-head{text-align:center;margin:8px 0 24px}
+.res-head .eyebrow{display:block}
+.res-head h2{font-family:var(--serif);font-size:30px;font-weight:500;margin-top:8px;line-height:1.2}
+.spent{display:flex;align-items:center;gap:18px;padding:20px;border-radius:20px;border:1px solid var(--gold-line);background:var(--gold-soft);margin-bottom:14px}
+.spent .big{font-family:var(--serif);font-size:56px;line-height:1;font-weight:700;min-width:84px;text-align:center}
+.spent .big small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--muted);font-weight:600;margin-top:6px}
+.spent p{font-size:15.5px;line-height:1.5;color:var(--cream)}
+.metric{padding:22px 20px;border-radius:20px;border:1px solid var(--line);background:rgba(20,33,74,.6);margin-bottom:14px}
+.metric .lbl{font-size:12.5px;letter-spacing:.2em;font-weight:700;color:var(--gold)}
+.metric .pct{font-family:var(--serif);font-size:64px;line-height:1;font-weight:700;margin:10px 0 12px}
+.metric .pct sup{font-size:28px;vertical-align:top;margin-left:2px;color:var(--muted)}
+.track{height:6px;border-radius:3px;background:rgba(243,234,214,.1);overflow:hidden}
+.track i{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,#c99a3c,#f0c873);transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.metric .desc{color:var(--muted);font-size:15.5px;margin-top:14px;line-height:1.5}
+.section-h{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:30px 0 14px}
+.alloc{padding:18px 18px 8px;border-radius:20px;border:1px solid var(--line);background:rgba(20,33,74,.45)}
+.alloc-row{margin-bottom:16px}
+.alloc-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+.alloc-top span{font-size:14px;font-weight:700;letter-spacing:.06em}
+.alloc-top b{font-family:var(--serif);font-size:22px}
+.alloc-row .track{height:10px;border-radius:5px}
+.alloc-row .track i{border-radius:5px}
+.leftover{font-size:14.5px;color:var(--muted);padding:12px 0 10px;border-top:1px solid var(--line);margin-top:4px}
+.leftover b{color:var(--cream)}
+.insight{font-family:var(--serif);font-size:19.5px;line-height:1.5;font-weight:500;margin:0 0 12px}
+.insight.soft{font-family:var(--sans);font-size:16px;color:var(--muted)}
+details.recap{border:1px solid var(--line);border-radius:16px;margin-top:22px;overflow:hidden}
+details.recap summary{list-style:none;min-height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-weight:600;font-size:15px;cursor:pointer}
+details.recap summary::-webkit-details-marker{display:none}
+details.recap summary::after{content:"+";font-size:22px;color:var(--gold)}
+details.recap[open] summary::after{content:"–"}
+.recap ol{list-style:none;padding:0 18px 12px}
+.recap li{padding:10px 0;border-top:1px solid var(--line);font-size:15px;display:flex;gap:12px}
+.recap li .n{color:var(--gold);font-weight:700;min-width:22px}
+.recap li .s{display:block;color:var(--dim);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.closing{text-align:center;margin:44px 0 6px}
+.closing .big{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1.2;margin-bottom:22px}
+.closing p{color:var(--muted);margin-bottom:6px}
+.closing .q{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--cream);line-height:1.4;margin:6px 0 20px}
+.closing .q.gold{color:var(--gold);margin-bottom:30px}
+
+/* ---------- reflect / final ---------- */
+.reflect{justify-content:center;padding:56px 2px 0}
+.reflect p{font-family:var(--serif);font-size:22px;line-height:1.45;font-weight:500;margin-bottom:20px}
+.reflect p.muted{color:var(--muted)}
+.reflect p.q{color:var(--gold);font-style:italic}
+.final{justify-content:center;text-align:center;padding:40px 0 0}
+.final .ref{font-family:var(--serif);font-weight:700;font-size:clamp(40px,13vw,58px);line-height:1.05;margin:20px 0 22px}
+.final .theme{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.4;color:var(--cream);max-width:340px;margin:0 auto}
+.final .rule{width:48px;height:2px;background:var(--gold);margin:30px auto}
+.final .ask{color:var(--muted);font-size:16.5px;max-width:330px;margin:0 auto}
+.final .foot{margin-top:auto;padding-top:40px;font-size:12px;letter-spacing:.22em;color:var(--dim);text-transform:uppercase}
+
+/* ---------- menu sheet ---------- */
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:60;opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;max-width:480px;margin:0 auto;padding:22px 18px calc(22px + env(safe-area-inset-bottom));
+  background:#111c3c;border-radius:22px 22px 0 0;border:1px solid var(--line);transform:translateY(105%);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.sheet.on{transform:none}
+.sheet h3{font-family:var(--serif);font-weight:500;font-size:22px;margin-bottom:6px}
+.sheet p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.top-menu{display:flex;justify-content:flex-end;padding-top:calc(10px + env(safe-area-inset-top))}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-delay:0s !important;transition-duration:.01ms !important}
+  .reveal > *{opacity:1}
+}
+@media (max-width:370px){
+  body{font-size:16px}
+  .story-title{font-size:27px}
+  .choice .txt{font-size:15.5px}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<div class="blackout" id="blackout"></div>
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu"></div>
+
+<script>
+/* =========================================================
+   100 KREDIT — game refleksi interaktif
+   Pelkat PT GPIB · Ibadah 4 Oktober 2026
+   Semua logika jalan di browser. Tanpa backend.
+
+   ATURAN KREDIT:
+   - Kredit tiap pilihan TIDAK ditampilkan ke pemain.
+   - Makin besar kredit yang dipakai, makin dekat pilihan itu ke ibadah.
+     Makin kecil, makin "duniawi".
+   - Di tiap cerita, pilihan paling dekat ke ibadah = 10 kredit,
+     jadi total maksimal 10 cerita = tepat 100 kredit.
+   ========================================================= */
+
+const SAVE_KEY = "100kredit_v2";
+
+/* dimensi skor tersembunyi */
+const KEYMAP = {
+  cw: "consciousWorship", gr: "gratitude", st: "stewardship", lo: "love",
+  in: "integrity", re: "responsibility", se: "service", sc: "selfCare"
+};
+
+const CATS = [
+  { id: "church", label: "⛪ GEREJA & PT" },
+  { id: "others", label: "👥 ORANG LAIN" },
+  { id: "resp",   label: "📚 TANGGUNG JAWAB" },
+  { id: "self",   label: "🎮 DIRI SENDIRI" }
+];
+
+let gameState = null;
+
+function newState(name) {
+  return {
+    v: 2, name: name || "Teruna", section: 0, credits: 100,
+    consciousWorship: 0, gratitude: 0, stewardship: 0, love: 0,
+    integrity: 0, responsibility: 0, service: 0, selfCare: 0,
+    allocations: { church: 0, others: 0, resp: 0, self: 0 },
+    choices: [], finished: false
+  };
+}
+
+/* pilihan pemain di cerita n (1–10) */
+function ch(n) {
+  const c = gameState && gameState.choices.find(x => x.s === n);
+  return c ? c.key : null;
+}
+
+/* ---------- helper blok konten ---------- */
+const P = t => ({ t: "p", text: t });
+const SAY = (who, t) => ({ t: "say", who, text: t });
+const CHAT = (from, t) => ({ t: "chat", from, text: t });
+const THINK = t => ({ t: "think", text: t });
+const QUIET = t => ({ t: "quiet", text: t });
+const LIST = items => ({ t: "list", items });
+
+/* Kak Rina ngomong langsung, atau lewat chat kalau pemain nggak ibadah */
+const rina = (t) => ch(1) === "C" ? CHAT("Kak Rina", t) : SAY("Kak Rina", t);
+const friend9 = () => ch(4) === "A" ? "Raka" : "Jojo";
+const committed = () => ch(2) === "A" || ch(2) === "B";
+const away8 = () => ch(7) === "D";
+
+/* =========================================================
+   DATA CERITA — 10 bagian
+   cost : kredit (disembunyikan) — makin besar makin dekat ke ibadah
+   fx   : skor tersembunyi
+   alloc: kredit masuk ke kategori mana (jumlahnya = cost)
+   ========================================================= */
+const STORIES = [
+/* ---------------- 01 ---------------- */
+{
+  day: "MINGGU", time: "08:10", title: "Minggu Pagi",
+  intro: () => [
+    P("Hari ini ada ibadah PT."),
+    P("Kamu baru bangun. Semalem kamu begadang ngerjain tugas, dan mata masih berat banget."),
+    P("HP-mu geter."),
+    CHAT("Grup PT GPIB", "Guys, jangan lupa ibadah jam 9 ya 🙏"),
+    CHAT("Jojo", "Bro, jadi kan nanti kita kerja kelompok jam 10?")
+  ],
+  choices: [
+    { key: "A", text: "Berangkat ibadah PT.", cost: 8,
+      fx: { cw: 10, gr: 4, sc: -2 }, alloc: { church: 8 },
+      out: () => [
+        P("Kamu mandi kilat terus langsung cabut. Nyampe gereja jam 08:56, napas masih ngos-ngosan."),
+        P("Lagu pembuka mulai. Buat beberapa menit, notif di HP rasanya jauh banget."),
+        P("Jam 10:20 kamu nyampe di rumah Jojo. Yang lain udah mulai duluan."),
+        SAY("Jojo", "Santai, bagian lu tinggal slide terakhir kok."),
+        QUIET("Kamu duduk dan mulai ngejar ketinggalan.")
+      ] },
+    { key: "B", text: "Kerja kelompok dulu, terus nyusul ibadah kalau sempat.", cost: 5,
+      fx: { cw: 4, re: 5, lo: 3, gr: 1 }, alloc: { resp: 3, church: 2 },
+      out: () => [
+        P("Kalian mulai lebih pagi. Ternyata diskusinya lebih lama dari perkiraan."),
+        P("Kamu nyampe gereja jam 10:05. Jemaat lagi berdiri buat terima berkat."),
+        P("Kamu berdiri di deket pintu belakang. Beberapa temen PT dadah-dadah kecil ke kamu."),
+        QUIET("Kamu cuma sempat ikut beberapa menit terakhir.")
+      ] },
+    { key: "C", text: "Nggak dateng. Kerja kelompok sampai beres.", cost: 2,
+      fx: { re: 6, lo: 3, st: 2, sc: 2 }, alloc: { resp: 2 },
+      out: () => [
+        P("Kamu fokus kerja kelompok sampai kelar. Hasilnya rapi, semua orang lega."),
+        P("Siangnya, grup PT rame foto-foto ibadah tadi pagi. Kamu scroll bentar, terus nutup HP.")
+      ] },
+    { key: "D", text: "Chat temen kelompok, minta jadwalnya digeser. Ibadah dulu.", cost: 10,
+      fx: { cw: 8, in: 4, re: 5, lo: 2, gr: 3, sc: -1 }, alloc: { church: 6, resp: 4 },
+      out: () => [
+        P("Kamu ngetik: \"Jo, bisa geser jadi jam 1 nggak? Gue mau ibadah dulu.\""),
+        CHAT("Jojo", "Oke, jam 1 ya. Asal jangan ngaret 😤"),
+        P("Kamu berangkat ibadah dengan kepala lebih tenang."),
+        P("Siangnya, kerja kelompok jalan sesuai jadwal baru.")
+      ] }
+  ]
+},
+/* ---------------- 02 ---------------- */
+{
+  day: "MINGGU", time: () => ch(1) === "C" ? "16:00" : "10:40", title: "“Kok Kamu Nggak Bantu?”",
+  intro: () => {
+    const b = [];
+    if (ch(1) === "C") b.push(P("Sorenya, ada chat masuk dari Kak Rina, salah satu pelayan PT."));
+    else if (ch(1) === "B") b.push(P("Kamu masih berdiri di deket pintu belakang waktu Kak Rina, salah satu pelayan PT, nyamperin kamu."));
+    else b.push(P("Ibadah selesai. Kak Rina, salah satu pelayan PT, nyamperin kamu."));
+    b.push(rina("Hai {name}! Sabtu depan kita ada kegiatan PT. Bisa bantu persiapannya nggak?"));
+    b.push(P("Sebenernya kamu ada waktu luang. Tapi kamu udah janji sama temen-temen sekolah buat dateng bareng ke acara sekolah Sabtu sore."));
+    return b;
+  },
+  choices: [
+    { key: "A", text: "“Bisa, Kak. Aku bantu.”", cost: 10,
+      fx: { se: 8, cw: 5, re: 2, lo: 1, sc: -2 }, alloc: { church: 10 },
+      out: () => [
+        rina("Serius? Makasih banget ya, {name}. Nanti aku masukin ke grup panitia."),
+        QUIET("Namamu masuk daftar tim persiapan.")
+      ] },
+    { key: "B", text: "“Aku bisa bantu, tapi cuma sampai jam tertentu.”", cost: 8,
+      fx: { se: 6, cw: 3, re: 4, in: 3, sc: 2 }, alloc: { church: 6, self: 2 },
+      out: () => [
+        rina("Sampai jam berapa kira-kira?"),
+        P("\"Sampai jam 11, Kak. Sorenya ada acara sekolah.\""),
+        rina("Oke, itu udah ngebantu banget. Aku catet ya.")
+      ] },
+    { key: "C", text: "“Minggu ini kayaknya nggak bisa, Kak.”", cost: 4,
+      fx: { sc: 4, in: 3, re: 1 }, alloc: { self: 4 },
+      out: () => [
+        rina("Oke, nggak apa-apa kok. Makasih udah langsung bilang."),
+        QUIET(ch(1) === "C" ? "Kak Rina nutup chat pakai stiker senyum." : "Kak Rina senyum, terus nyamperin orang lain.")
+      ] },
+    { key: "D", text: "“Aku pikir-pikir dulu ya, Kak.”", cost: 2,
+      fx: { sc: 2, st: 1 }, alloc: { self: 2 },
+      out: () => [
+        rina("Boleh. Kabarin aku paling lambat Kamis, ya."),
+        QUIET("Kamu nyimpen pertanyaan itu buat nanti.")
+      ] }
+  ]
+},
+/* ---------------- 03 ---------------- */
+{
+  day: "SENIN", time: "13:20", title: "Uang Jajan",
+  intro: () => {
+    const b = [
+      P("Bel pulang bunyi. Ada notif dari mamamu."),
+      CHAT("Mama", "Mama transfer Rp50.000 ya. Buat jajan tambahan 😊"),
+      P("Uang tambahan yang sama sekali nggak kamu sangka."),
+      CHAT("Grup Kelas", "Makan bakso yuk abis ini! 🍜"),
+      P("Di saat yang sama, item game yang udah lama kamu incer lagi ada di toko. Harganya pas Rp50.000.")
+    ];
+    if (ch(2) === "D") b.push(THINK("Kamu juga inget: kamu belum bales Kak Rina."));
+    return b;
+  },
+  choices: [
+    { key: "A", text: "Ikut makan bareng temen-temen.", cost: 5,
+      fx: { lo: 5, gr: 3, sc: 3, st: 1 }, alloc: { others: 3, self: 2 },
+      out: () => [
+        P("Kalian makan bakso sambil ketawa-ketawa soal guru olahraga. Hal receh, tapi hari itu jadi kerasa ringan."),
+        QUIET("Uang tambahanmu udah habis, tapi perut kenyang dan hati seneng.")
+      ] },
+    { key: "B", text: "Simpen uangnya.", cost: 6,
+      fx: { st: 7, re: 3, gr: 1 }, alloc: { resp: 6 },
+      out: () => [
+        P("Kamu nyimpen uangnya. Temen-temenmu berangkat tanpa kamu."),
+        P("Malemnya, kamu lihat saldo yang sedikit lebih tebel. Rasanya tenang.")
+      ] },
+    { key: "C", text: "Beli item game yang udah lama diincer.", cost: 2,
+      fx: { sc: 5, gr: 2 }, alloc: { self: 2 },
+      out: () => [
+        P("Item itu akhirnya punya kamu. Malam itu juga langsung kamu pakai di game."),
+        QUIET("Udah lama kamu nunggu ini. Puas rasanya.")
+      ] },
+    { key: "D", text: "Sisihin sebagian buat persembahan PT minggu depan.", cost: 10,
+      fx: { cw: 6, gr: 5, st: 3, se: 1 }, alloc: { church: 7, resp: 3 },
+      out: () => [
+        P("Kamu misahin Rp20.000 ke amplop kecil buat persembahan PT hari Minggu. Sisanya kamu simpen."),
+        P("Temen-temenmu udah berangkat makan. Kamu pulang sedikit lebih awal.")
+      ] }
+  ]
+},
+/* ---------------- 04 ---------------- */
+{
+  day: "SELASA", time: "22:47", title: "Chat Tengah Malam",
+  intro: () => [
+    P("Kamu lagi belajar buat ujian besok. Bab terakhir baru setengah jalan."),
+    CHAT("Raka", "{name}, lu masih bangun?"),
+    CHAT("Raka", "Gue lagi kacau banget. Bisa call bentar?"),
+    P("Raka sahabatmu dari SMP. Ujian besok penting.")
+  ],
+  choices: [
+    { key: "A", text: "Telepon sekarang.", cost: 10,
+      fx: { lo: 8, se: 3, re: -2, sc: -3 }, alloc: { others: 10 },
+      out: () => [
+        P("Kamu nelepon. Suara Raka pelan. Orang tuanya berantem hebat malam ini, dan dia nggak tahu harus ngapain."),
+        P("Kamu lebih banyak dengerin daripada ngomong."),
+        SAY("Raka", "Makasih ya. Gue cuma butuh didengerin."),
+        QUIET("Jam udah 23:52. Bab terakhir masih nunggu.")
+      ] },
+    { key: "B", text: "“Gue masih belajar. Cerita aja lewat chat.”", cost: 7,
+      fx: { lo: 5, re: 4, in: 2 }, alloc: { others: 4, resp: 3 },
+      out: () => [
+        CHAT("Raka", "Ortu gue ribut lagi. Gede."),
+        CHAT("Raka", "Udah, gitu aja sih. Sorry ganggu."),
+        P("Kamu bales beberapa kalimat sambil sesekali ngelirik catetan."),
+        QUIET("Obrolannya berhenti sekitar jam 23:20.")
+      ] },
+    { key: "C", text: "“Besok aja ya. Gue harus belajar.”", cost: 4,
+      fx: { re: 6, in: 3, sc: 3, lo: 1 }, alloc: { resp: 4 },
+      out: () => [
+        CHAT("Raka", "Oke. Sukses ujiannya."),
+        P("Kamu nyelesaiin bab terakhir dan tidur jam 23:40.")
+      ] },
+    { key: "D", text: "Cuekin dulu. Lanjut belajar.", cost: 1,
+      fx: { re: 5, sc: 2, lo: -2 }, alloc: { resp: 1 },
+      out: () => [
+        P("Kamu nelungkupin HP. Layarnya nyala dua kali lagi, terus diam."),
+        P("Kamu nyelesaiin bab terakhir. Materinya mulai masuk.")
+      ] }
+  ]
+},
+/* ---------------- 05 ---------------- */
+{
+  day: "RABU", time: "14:00", title: "Nilai Ulangan",
+  intro: () => {
+    const b = [];
+    const k = ch(4);
+    if (k === "A") {
+      b.push(P("Kamu cuma tidur lima jam. Tadi pagi Raka ngirim satu stiker: 🙏"));
+      b.push(P("Anehnya, ujiannya lancar, malah lebih baik dari yang kamu kira."));
+    } else if (k === "B") {
+      b.push(P("Tadi pagi Raka nyapa kamu di gerbang sekolah. \"Udah agak mendingan,\" katanya singkat."));
+    } else if (k === "C") {
+      b.push(P("Kamu tidur cukup, dan ujiannya lancar."));
+      b.push(P("Di koridor, Raka lewat dan ngangkat tangan bentar. Kalian belum sempat ngobrol."));
+    } else {
+      b.push(P("Kamu tidur cukup, dan ujiannya lancar."));
+      b.push(P("Waktu istirahat, kamu baru sadar: ada tiga chat dari Raka yang belum kamu buka."));
+    }
+    b.push(P("Nilai keluar: 95."));
+    b.push(P("Nadia, temen sebangkumu, dapet 62."));
+    b.push(SAY("Nadia", "Gila, kok bisa sih? Boleh lihat jawabanmu nggak? Buat belajar."));
+    b.push(QUIET("Tadi Bu Wati udah bilang: jangan saling bandingin jawaban setelah ujian."));
+    return b;
+  },
+  choices: [
+    { key: "A", text: "Tunjukin lembar jawabanmu biar dia paham.", cost: 4,
+      fx: { lo: 4, in: -4, se: 2 }, alloc: { others: 4 },
+      out: () => [
+        P("Nadia motret lembar jawabanmu. \"Makasih banget!\""),
+        P("Dari mejanya, Bu Wati ngelirik bentar, terus lanjut nulis.")
+      ] },
+    { key: "B", text: "Jelasin konsepnya tanpa nunjukin jawaban.", cost: 8,
+      fx: { lo: 5, in: 5, se: 3, re: 1 }, alloc: { others: 8 },
+      out: () => [
+        P("Kamu corat-coret rumus di kertas bekas dan jelasin pelan-pelan."),
+        SAY("Nadia", "Ohh… jadi yang ini dulu, baru dikali. Pantes.")
+      ] },
+    { key: "C", text: "“Nanti aja ya, gue juga mau istirahat.”", cost: 2,
+      fx: { sc: 4, re: 1, in: 1 }, alloc: { self: 2 },
+      out: () => [
+        SAY("Nadia", "Oke deh, santai."),
+        P("Kamu nyenderin kepala ke meja. Minggu ini kerasa panjang.")
+      ] },
+    { key: "D", text: "Ajak Nadia belajar bareng pulang sekolah.", cost: 10,
+      fx: { lo: 7, se: 4, in: 3, sc: -2 }, alloc: { others: 10 },
+      out: () => [
+        P("Kalian belajar di perpus sampai jam lima. Pelan-pelan, Nadia mulai ngerti polanya."),
+        SAY("Nadia", "Lu sabar banget, sumpah."),
+        QUIET("Kamu pulang lebih sore dari biasanya.")
+      ] }
+  ]
+},
+/* ---------------- 06 ---------------- */
+{
+  day: "KAMIS", time: "16:30", title: "“Kamu Kan Anak Gereja”",
+  intro: () => {
+    const b = [
+      P("Lagi nongkrong di depan kelas, temen-temenmu ngebahas story IG-mu dari kegiatan PT."),
+      SAY("Kevin", "Lu tiap minggu ke gereja terus, ya?"),
+      SAY("Dimas", "Wah, anak alim.")
+    ];
+    if (ch(1) === "C") b.push(THINK("Padahal hari Minggu kemarin kamu nggak dateng."));
+    if (ch(5) === "D") b.push(QUIET("Nadia, yang kemarin belajar bareng kamu, ikut senyum-senyum."));
+    b.push(P("Semua ketawa kecil. Kamu jadi agak canggung."));
+    return b;
+  },
+  choices: [
+    { key: "A", text: "Ikut bercanda biar nggak dikira sok suci.", cost: 3,
+      fx: { sc: 2, lo: 2, in: -1 }, alloc: { self: 3 },
+      out: () => [
+        P("\"Alim apaan, gue juga ketiduran pas khotbah,\" katamu."),
+        P("Semua ketawa. Obrolan pindah ke topik lain."),
+        QUIET("Entah kenapa, ada yang sedikit ngeganjel.")
+      ] },
+    { key: "B", text: "Jelasin santai kenapa kamu ikut PT.", cost: 10,
+      fx: { cw: 6, in: 4, lo: 2, gr: 3 }, alloc: { church: 6, others: 4 },
+      out: () => [
+        P("Kamu cerita santai: di PT kamu punya temen, bisa ngobrolin hal-hal yang jarang dibahas di sekolah, dan belajar soal iman."),
+        P("Malemnya, Kevin ngechat:"),
+        CHAT("Kevin", "Yang lu bilang tadi… PT itu boleh didatengin siapa aja?")
+      ] },
+    { key: "C", text: "Diem aja terus ganti topik.", cost: 2,
+      fx: { sc: 3 }, alloc: { self: 2 },
+      out: () => [
+        P("\"Eh, PR fisika udah belum?\" katamu."),
+        P("Obrolan geser. Nggak ada yang ngebahas lagi.")
+      ] },
+    { key: "D", text: "“Iya, gue anak gereja. Kenapa?”", cost: 7,
+      fx: { cw: 4, in: 4, lo: -1 }, alloc: { church: 7 },
+      out: () => [
+        P("Hening sebentar."),
+        SAY("Kevin", "Santai, cuma nanya."),
+        SAY("Dimas", "Respect sih."),
+        QUIET("Kamu nggak yakin nadamu tadi kedengeran kayak gimana.")
+      ] }
+  ]
+},
+/* ---------------- 07 ---------------- */
+{
+  day: "JUMAT", time: "19:00", title: "Grup PT",
+  intro: () => {
+    const b = [];
+    const k = ch(2);
+    if (k === "A") b.push(P("Sejak hari Minggu, namamu ada di daftar tim persiapan."));
+    else if (k === "B") b.push(P("Kamu udah bilang ke Kak Rina bisa bantu sampai jam 11."));
+    else if (k === "C") b.push(P("Kamu udah bilang ke Kak Rina kalau minggu ini kamu nggak bisa bantu persiapan."));
+    else b.push(P("Kamu baru sadar: sampai hari ini kamu belum bales Kak Rina."));
+    b.push(CHAT("Grup PT GPIB", "Besok kita butuh beberapa orang dateng lebih pagi buat persiapan. Jam 7 ya 🙏"));
+    b.push(P("Minggu ini capek banget, dan kamu pengen tidur lebih lama. Sabtu sore juga ada acara sekolah."));
+    return b;
+  },
+  choices: [
+    { key: "A", text: "Dateng pagi dan bantu persiapan.", cost: 10,
+      fx: { se: 8, cw: 4, re: 2, sc: -3 }, mod: () => committed() ? { in: 3 } : {}, alloc: { church: 10 },
+      out: () => {
+        const b = [
+          P("Alarm bunyi jam 05:45. Kamu nyeret badan keluar kamar."),
+          P("Di gereja, kamu ngangkat kursi, nempel dekorasi, dan nyusun konsumsi bareng temen-temen PT. Salah satunya Tasya, yang udah dateng dari jam enam.")
+        ];
+        if (ch(2) === "A") b.push(QUIET("Kak Rina nyentang namamu di daftar."));
+        return b;
+      } },
+    { key: "B", text: "Dateng di jam acara biasa.", cost: 5,
+      fx: { cw: 4, sc: 3, re: 2 }, mod: () => ch(2) === "A" ? { in: -2 } : {}, alloc: { church: 5 },
+      out: () => {
+        const b = [
+          P("Kamu tidur sampai jam tujuh lewat dan dateng pas acara mulai. Aula udah rapi."),
+          P("Di grup, ada foto dari tadi pagi: Tasya lagi ngangkat tumpukan kursi.")
+        ];
+        if (ch(2) === "A") b.push(QUIET("Kak Rina lihat kamu masuk dan dadah. Dia nggak bilang apa-apa soal tadi pagi."));
+        return b;
+      } },
+    { key: "C", text: "Tanya dulu: yang bantu udah cukup belum?", cost: 8,
+      fx: { re: 5, st: 5, in: 2, se: 2, cw: 1 }, alloc: { church: 6, resp: 2 },
+      out: () => [
+        P("Kamu ngetik: \"Kak, yang bantu udah cukup belum? Kalau kurang, aku dateng pagi.\""),
+        CHAT("Kak Rina", "Udah ada 6 orang, aman! Tapi boleh minta tolong bawain gulungan kabel dari rumah? 🙏"),
+        P("Besoknya kamu dateng di jam acara, bawa gulungan kabel. Dari foto di grup, kamu lihat Tasya udah di sana dari jam enam.")
+      ] },
+    { key: "D", text: "Nggak dateng. Besok udah ada acara sekolah.", cost: 1,
+      fx: { sc: 4, re: 2 }, mod: () => committed() ? { in: -4, re: -2 } : {}, alloc: { self: 1 },
+      out: () => {
+        const b = [
+          P("Kamu matiin alarm dan tidur sampai jam sembilan. Badan jauh lebih seger."),
+          P("Paginya, kamu lihat story Tasya dari jam 06:30: dia lagi nyusun kursi di aula gereja.")
+        ];
+        if (committed()) b.push(QUIET("Di grup panitia, Kak Rina nulis: \"{name}, aman?\" Kamu belum bales."));
+        return b;
+      } }
+  ]
+},
+/* ---------------- 08 ---------------- */
+{
+  day: "SABTU", time: "11:30", title: "Konflik",
+  intro: () => away8() ? [
+    P("Kamu lagi siap-siap ke acara sekolah waktu grup PT rame."),
+    CHAT("Kak Andre · Grup PT", "Tasya, lain kali ikut bantu beresin ya. Dari tadi nggak kelihatan."),
+    P("Kamu tahu ceritanya nggak sesederhana itu. Kamu lihat sendiri story Tasya dari pagi. Kak Andre aja yang nggak lihat."),
+    CHAT("Tasya", "Jangan bilang siapa-siapa deh. Males ribut.")
+  ] : [
+    P("Acara PT hampir selesai. Kak Andre, salah satu pelayan, nyamperin Tasya di depan beberapa orang."),
+    SAY("Kak Andre", "Tasya, dari tadi kok nggak kelihatan bantu? Lain kali ikut beresin ya."),
+    P("Kamu tahu ceritanya nggak sesederhana itu. Tasya udah bantu dari pagi. Kak Andre aja yang nggak lihat."),
+    P("Tasya deketin kamu dan bisik-bisik:"),
+    SAY("Tasya", "Jangan bilang siapa-siapa deh. Males ribut.")
+  ],
+  choices: [
+    { key: "A", text: "Diem aja.", cost: 1,
+      fx: { lo: 1, in: -2, sc: 2 }, alloc: { self: 1 },
+      out: () => away8() ? [
+        P("Kamu nutup grup. Tasya ngirim satu stiker jempol."),
+        QUIET("Kak Andre masih ngira Tasya nggak ikut bantu.")
+      ] : [
+        P("Kamu diem. Tasya ngangguk kecil ke kamu, terus lanjut gulung kabel."),
+        QUIET("Kak Andre masih ngira Tasya nggak ikut bantu.")
+      ] },
+    { key: "B", text: () => away8() ? "Chat Kak Andre secara pribadi." : "Ngomong empat mata sama Kak Andre setelah acara.", cost: 8,
+      fx: { in: 6, lo: 3, re: 3, se: 1 }, alloc: { others: 8 },
+      out: () => [
+        P(away8() ? "Kamu ngirim chat pribadi ke Kak Andre, jelasin pelan-pelan." : "Setelah acara, kamu ngomong pelan sama Kak Andre."),
+        away8() ? CHAT("Kak Andre", "Oh… aku beneran nggak lihat. Makasih udah ngasih tahu.") : SAY("Kak Andre", "Oh… aku beneran nggak lihat. Makasih udah ngasih tahu."),
+        P("Kak Andre minta maaf ke Tasya. Nggak lama, Tasya ngechat kamu."),
+        CHAT("Tasya", "Kan gue bilang jangan… tapi ya udah. Makasih.")
+      ] },
+    { key: "C", text: () => away8() ? "Belain Tasya di grup sekarang juga." : "Belain Tasya sekarang juga, di depan semua orang.", cost: 6,
+      fx: { in: 5, lo: 3, sc: -2, re: -1 }, alloc: { others: 6 },
+      out: () => away8() ? [
+        P("Kamu ngetik di grup: \"Kak, Tasya udah bantu dari pagi kok. Ada di story-nya.\""),
+        P("Grup hening bentar."),
+        CHAT("Kak Andre · Grup PT", "Oh, maaf ya Tasya 🙏"),
+        QUIET("Tasya cuma bales satu stiker. Masalahnya beres. Suasananya agak canggung.")
+      ] : [
+        P("\"Kak, Tasya udah bantu dari jam enam!\" katamu, lumayan keras."),
+        P("Semua noleh. Kak Andre diem, terus minta maaf di depan semua orang."),
+        P("Tasya senyum kaku. Mukanya merah."),
+        QUIET("Masalahnya beres. Suasananya agak canggung.")
+      ] },
+    { key: "D", text: "Tanya Tasya dulu: dia mau kamu jelasin atau nggak?", cost: 10,
+      fx: { lo: 6, in: 4, re: 3 }, alloc: { others: 10 },
+      out: () => [
+        P(away8() ? "Kamu bales chat Tasya: \"Mau gue jelasin ke Kak Andre nggak? Pelan-pelan aja, lewat chat pribadi.\"" : "Kamu narik Tasya ke samping. \"Mau gue jelasin ke Kak Andre nggak? Pelan-pelan aja, berdua.\""),
+        away8() ? CHAT("Tasya", "…Ya udah. Tapi jangan di grup.") : SAY("Tasya", "…Ya udah. Tapi jangan di depan orang."),
+        P("Kamu jelasin ke Kak Andre secara pribadi. Dia minta maaf ke Tasya, juga secara pribadi.")
+      ] }
+  ]
+},
+/* ---------------- 09 ---------------- */
+{
+  day: "SABTU", time: "21:00", title: "Minggu Depan",
+  intro: () => {
+    const f = friend9();
+    const b = [
+      P("Kamu buka kalender."),
+      LIST([["Senin", "Ujian"], ["Tugas", "Belum kelar"], ["Tidur", "Kurang"]]),
+      CHAT(f, f === "Raka"
+        ? "Besok pagi ngerjain tugas bareng yuk? Gue traktir kopi, buat yang kemarin."
+        : "Besok pagi ngerjain tugas bareng yuk? Jam 8?"),
+      CHAT("Pengingat", "Ibadah PT — 09:00")
+    ];
+    if (100 - gameState.credits >= 55) b.push(QUIET("Kamu ngerasa capek. Minggu ini udah nguras banyak hal."));
+    return b;
+  },
+  choices: [
+    { key: "A", text: "Ibadah dulu, tugasnya diberesin setelahnya.", cost: 8,
+      fx: { cw: 8, gr: 3, re: 3, sc: -1 }, alloc: { church: 5, resp: 3 },
+      out: () => [
+        P("Kamu bales: \"Abis ibadah ya, jam 11.\""),
+        CHAT(friend9(), "Oke deh."),
+        P("Kamu matiin lampu. Besok bakal padet.")
+      ] },
+    { key: "B", text: "Beresin tugas malam ini, besok ibadah.", cost: 7,
+      fx: { cw: 7, re: 6, st: 2, sc: -5 }, alloc: { resp: 4, church: 3 },
+      out: () => [
+        P("Kamu begadang sampai jam satu. Tugasnya kelar. Mata perih."),
+        QUIET("Besok pagi kamu tetep berangkat ibadah.")
+      ] },
+    { key: "C", text: "Nggak ibadah besok biar tugasnya kelar.", cost: 2,
+      fx: { re: 6, sc: 3, st: 1 }, alloc: { resp: 2 },
+      out: () => [
+        P("Kamu bales: \"Gas, jam 8.\""),
+        P("Kamu tidur lebih cepet. Besok fokus ke tugas.")
+      ] },
+    { key: "D", text: "Hubungi temenmu dan atur ulang jadwal kerja kelompok.", cost: 10,
+      fx: { re: 5, in: 3, lo: 3, cw: 4, st: 3 }, alloc: { church: 5, resp: 5 },
+      out: () => [
+        P(`Kamu nelepon ${friend9()}. Kalian sepakat: kerja kelompok jam 1 siang, dan malam ini masing-masing ngerjain bagian kecil dulu.`),
+        P("Rencananya jadi lebih masuk akal. Kamu tidur jam sebelas.")
+      ] }
+  ]
+},
+/* ---------------- 10 ---------------- */
+{
+  day: "MINGGU", time: "08:35", title: "Pilihan Terakhir",
+  intro: () => [
+    P(ch(9) === "C"
+      ? `Kamu udah siap berangkat ke rumah ${friend9()} buat kerja kelompok.`
+      : "Kamu udah siap berangkat ibadah."),
+    P("Kamu masih punya waktu buat ngelakuin SATU hal sebelum berangkat.")
+  ],
+  choices: [
+    { key: "A", text: () => ch(9) === "C" ? "Berdoa dan nyiapin hati sebelum mulai hari." : "Berdoa dan nyiapin hati buat ibadah.", cost: 10,
+      fx: { cw: 10, gr: 5 }, alloc: { church: 10 } },
+    { key: "B", text: "Bantu orang tua nyelesaiin kerjaan rumah.", cost: 8,
+      fx: { lo: 5, se: 5, re: 2, gr: 2 }, alloc: { others: 8 } },
+    { key: "C", text: "Nyicil tugas sekolah yang belum kelar.", cost: 5,
+      fx: { re: 6, st: 3 }, alloc: { resp: 5 } },
+    { key: "D", text: "Duduk, main HP, nikmatin waktu sendiri.", cost: 2,
+      fx: { sc: 6 }, alloc: { self: 2 } }
+  ]
+}
+];
+
+/* =========================================================
+   SKOR
+   - Ibadah ritual = kredit yang masuk ke GEREJA & PT
+     (ibadah, pelayanan, persembahan, doa, berani terbuka soal iman)
+   - Ibadah aktual = kredit yang masuk ke ORANG LAIN + TANGGUNG JAWAB
+     (dengerin teman, bantu orang tua, ngerjain PR, jujur, dll)
+   Masing-masing dibandingkan dengan jumlah maksimal yang mungkin.
+   Kredit DIRI SENDIRI tidak masuk ke dua-duanya.
+   ========================================================= */
+const RITUAL = ["church"], AKTUAL = ["others", "resp"];
+const sumAlloc = (alloc, keys) => keys.reduce((a, k) => a + (alloc[k] || 0), 0);
+const MAX_RITUAL = STORIES.reduce((a, s) => a + Math.max(...s.choices.map(c => sumAlloc(c.alloc, RITUAL))), 0);
+const MAX_AKTUAL = STORIES.reduce((a, s) => a + Math.max(...s.choices.map(c => sumAlloc(c.alloc, AKTUAL))), 0);
+
+function computeResults(st) {
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const alloc = {};
+  CATS.forEach(c => alloc[c.id] = Math.round(st.allocations[c.id]));
+  const ritual = clamp(Math.round(100 * sumAlloc(st.allocations, RITUAL) / MAX_RITUAL), 0, 100);
+  const aktual = clamp(Math.round(100 * sumAlloc(st.allocations, AKTUAL) / MAX_AKTUAL), 0, 100);
+  return { ritual, aktual, alloc, spent: 100 - st.credits, left: st.credits };
+}
+
+/* =========================================================
+   SIMPAN PROGRES (opsional, gagal pun tidak apa-apa)
+   ========================================================= */
+function save() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(gameState)); } catch (e) {} }
+function load() { try { const r = localStorage.getItem(SAVE_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
+function clearSave() { try { localStorage.removeItem(SAVE_KEY); } catch (e) {} }
+
+/* =========================================================
+   TAMPILAN
+   ========================================================= */
+const $ = sel => document.querySelector(sel);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fill = s => esc(s).replace(/\{name\}/g, esc(gameState ? gameState.name : "Teruna"));
+const val = v => typeof v === "function" ? v() : v;
+const pad = n => String(n).padStart(2, "0");
+
+function blockHTML(b) {
+  switch (b.t) {
+    case "p": return `<p class="nar">${fill(b.text)}</p>`;
+    case "think": return `<p class="think">${fill(b.text)}</p>`;
+    case "quiet": return `<p class="quiet">${fill(b.text)}</p>`;
+    case "say": return `<div class="say"><span class="who">${esc(b.who)}</span><p>“${fill(b.text)}”</p></div>`;
+    case "chat": return `<div class="chat"><div class="from">${esc(b.from)}</div><div class="bubble">${fill(b.text)}</div></div>`;
+    case "list": return `<ul class="cal">${b.items.map(i => `<li><b>${esc(i[0])}</b><span>${esc(i[1])}</span></li>`).join("")}</ul>`;
+  }
+  return "";
+}
+
+function mount(html, opts = {}) {
+  $("#app").innerHTML = `<div class="screen">${html}</div>`;
+  window.scrollTo(0, 0);
+  document.body.classList.toggle("night", !!opts.night);
+}
+
+function hud(idx) {
+  const dots = Array.from({ length: 10 }, (_, i) =>
+    `<i class="${i < idx ? "on" : i === idx ? "now" : ""}"></i>`).join("");
+  return `<header class="hud">
+    <button class="icon-btn" aria-label="Menu" data-menu><span></span></button>
+    <div class="hud-mid">
+      <div class="hud-story">CERITA <b>${pad(idx + 1)}</b> / 10</div>
+      <div class="dots">${dots}</div>
+    </div>
+  </header>`;
+}
+
+/* ---------- LAYAR 0: pembuka ---------- */
+function renderLanding() {
+  const saved = load();
+  const canResume = saved && saved.v === 2 && !saved.finished && saved.section > 0 && saved.section <= 10;
+  mount(`
+    <div class="landing">
+      <div class="coin"><b>100</b></div>
+      <div class="logo">100<small>KREDIT</small></div>
+      <p class="tagline">Semua yang dikasih ke kamu,<br>mau dipakai buat apa?</p>
+      <div class="intro-copy">
+        <p>Kamu punya <strong>100 kredit</strong>.<br>Itu waktumu, tenagamu, uangmu, perhatianmu, dan kesempatanmu.</p>
+        <p>Kamu nggak bisa nyimpen semuanya selamanya.<br><strong>Kamu harus milih.</strong></p>
+      </div>
+      <div class="landing-actions">
+        ${canResume ? `<button class="btn btn-primary" data-resume>LANJUTIN · CERITA ${pad(Math.min(saved.section + 1, 10))}</button>
+                       <button class="btn btn-ghost" data-start>MULAI DARI AWAL</button>`
+                    : `<button class="btn btn-primary" data-start>MULAI</button>`}
+        <p class="fine">Main jujur aja, ya. Nggak ada jawaban yang paling bener.</p>
+      </div>
+    </div>`);
+  $("[data-start]").onclick = () => { clearSave(); renderSetup(); };
+  const r = $("[data-resume]");
+  if (r) r.onclick = () => {
+    gameState = saved;
+    if (gameState.section >= 10) renderEnding(); else renderStory(gameState.section);
+  };
+}
+
+/* ---------- LAYAR 1: nama ---------- */
+function renderSetup() {
+  mount(`
+    <div class="setup">
+      <span class="eyebrow">Sebelum mulai</span>
+      <h2>Satu minggu dalam hidupmu.</h2>
+      <label class="field-label" for="nameInput">Mau dipanggil siapa?</label>
+      <input id="nameInput" class="name-input" type="text" maxlength="20" placeholder="Teruna" autocomplete="off" autocapitalize="words" enterkeyhint="done">
+      <div class="credit-hero"><div class="lbl">KREDIT</div><div class="num">100</div>
+        <div class="sub">Tiap pilihan bakal makan kredit. Berapa banyaknya? Kamu baru tahu di akhir.</div></div>
+      <p class="week-lines"><span>Satu minggu.</span><span>Sepuluh pilihan.</span><span>Nggak ada jawaban yang sempurna.</span></p>
+      <div class="spacer"></div>
+      <button class="btn btn-primary" data-begin>GAS, MULAI</button>
+    </div>`);
+  const inp = $("#nameInput");
+  const go = () => {
+    const name = inp.value.trim().replace(/\s+/g, " ") || "Teruna";
+    gameState = newState(name);
+    save();
+    renderStory(0);
+  };
+  $("[data-begin]").onclick = go;
+  inp.addEventListener("keydown", e => { if (e.key === "Enter") { inp.blur(); go(); } });
+}
+
+/* ---------- LAYAR CERITA ---------- */
+let locked = false;
+
+function renderStory(idx) {
+  locked = false;
+  const s = STORIES[idx];
+  const cards = s.choices.map((c, i) => `
+    <button class="choice" data-i="${i}">
+      <span class="letter">${c.key}</span>
+      <span class="txt">${fill(val(c.text))}</span>
+    </button>`).join("");
+
+  mount(`${hud(idx)}
+    <section class="story">
+      <span class="when">${s.day} · ${val(s.time)}</span>
+      <h2 class="story-title">${esc(s.title)}</h2>
+      ${s.intro().map(blockHTML).join("")}
+      <div class="prompt">Kamu mau ngapain?</div>
+      <div class="choices">${cards}</div>
+    </section>`);
+  bindMenu();
+  document.querySelectorAll(".choice").forEach(btn => {
+    btn.addEventListener("click", () => choose(idx, +btn.dataset.i, btn), { once: true });
+  });
+}
+
+function choose(idx, ci, btn) {
+  if (locked) return;
+  locked = true;
+  const c = STORIES[idx].choices[ci];
+
+  document.querySelectorAll(".choice").forEach(b => {
+    b.disabled = true;
+    if (b !== btn) b.classList.add("faded");
+  });
+  btn.classList.add("picked");
+
+  // skor tersembunyi
+  const fx = Object.assign({}, c.fx);
+  if (c.mod) { const m = c.mod(); for (const k in m) fx[k] = (fx[k] || 0) + m[k]; }
+  for (const k in fx) gameState[KEYMAP[k]] += fx[k];
+  // kredit (diam-diam)
+  const cost = Math.min(c.cost, gameState.credits);
+  const factor = c.cost > 0 ? cost / c.cost : 0;
+  for (const k in c.alloc) gameState.allocations[k] += c.alloc[k] * factor;
+  gameState.credits -= cost;
+
+  const label = val(c.text);
+  gameState.choices.push({ s: idx + 1, key: c.key, label });
+  gameState.section = idx + 1;
+  save();
+
+  setTimeout(() => {
+    if (idx === 9) fadeToBlack(renderEnding);
+    else renderOutcome(idx, c, label);
+  }, 900);
+}
+
+function renderOutcome(idx, c, label) {
+  const s = STORIES[idx];
+  const blocks = c.out ? c.out() : [];
+  mount(`${hud(idx)}
+    <section class="story outcome">
+      <span class="when">${s.day} · ${val(s.time)}</span>
+      <h2 class="story-title">${esc(s.title)}</h2>
+      <div class="picked-recap"><div class="k">Pilihanmu</div><div class="t">${fill(label)}</div></div>
+      <div class="blocks">${blocks.map(blockHTML).join("")}</div>
+      <div class="spacer"></div>
+      <button class="btn btn-primary" data-next>LANJUT →</button>
+    </section>`);
+  const dots = document.querySelectorAll(".dots i");
+  if (dots[idx]) dots[idx].className = "on";
+  bindMenu();
+  $("[data-next]").onclick = () => renderStory(idx + 1);
+}
+
+function fadeToBlack(next) {
+  const bo = $("#blackout");
+  bo.classList.add("on");
+  setTimeout(() => { next(); setTimeout(() => bo.classList.remove("on"), 120); }, 1400);
+}
+
+const stagger = lines => lines.map((l, i) => l.replace(/^<(\w+)/, `<$1 style="--i:${i}"`)).join("");
+
+/* ---------- AKHIR MINGGU ---------- */
+function renderEnding() {
+  mount(`<div class="ending reveal">${stagger([
+    `<h1>MINGGUNYA<br>UDAH SELESAI.</h1>`,
+    `<p>Kamu mulai dengan 100 kredit.</p>`,
+    `<p>Kamu nggak bisa nyimpen semuanya.</p>`,
+    `<p class="em">Kamu harus milih.</p>`,
+    `<p class="em">Kamu harus nentuin prioritas.</p>`,
+    `<p>Kamu harus mutusin: apa yang layak dapet waktu, uang, tenaga, dan perhatianmu.</p>`,
+    `<button class="btn btn-primary" data-results>LIHAT MINGGUMU</button>`
+  ])}</div>`, { night: true });
+  $("[data-results]").onclick = renderResults;
+}
+
+/* ---------- HASIL ---------- */
+function renderResults() {
+  gameState.finished = true;
+  save();
+  const r = computeResults(gameState);
+  const maxA = Math.max(1, ...Object.values(r.alloc));
+  const topCat = CATS.map(c => c.id).sort((a, b) => r.alloc[b] - r.alloc[a])[0];
+
+  const flow = {
+    church: "Minggu ini, kreditmu paling banyak ngalir ke gereja dan PT.",
+    others: "Minggu ini, kreditmu paling banyak ngalir ke orang-orang di sekitarmu.",
+    resp: "Minggu ini, kreditmu paling banyak ngalir ke tanggung jawabmu.",
+    self: "Minggu ini, kreditmu paling banyak kamu pakai buat diri sendiri: istirahat, seneng-seneng, waktu pribadi."
+  }[topCat];
+
+  let gap;
+  if (r.ritual - r.aktual >= 15) {
+    gap = "Ibadah ritualmu kuat: kamu dateng, ikut pelayanan, berdoa. Coba pikirin juga: gimana ibadahmu di hari Senin sampai Sabtu, di rumah, di sekolah, sama temen?";
+  } else if (r.aktual - r.ritual >= 15) {
+    gap = "Banyak kreditmu kepake buat hal sehari-hari: dengerin temen, bantu orang lain, beresin tanggung jawab. Itu juga ibadah. Tapi gimana dengan waktu khusus buat Tuhan: ibadah, doa, saat teduh?";
+  } else {
+    gap = "Ibadah ritual dan ibadah aktualmu jalannya cukup seimbang. Pertanyaannya tetap sama buat semua orang: semua itu kamu lakukan sebagai apa?";
+  }
+
+  const recap = gameState.choices.map(c =>
+    `<li><span class="n">${pad(c.s)}</span><span><span class="s">${esc(STORIES[c.s - 1].title.replace(/[“”]/g, ""))}</span>${fill(c.label)}</span></li>`).join("");
+
+  mount(`
+    <div class="top-menu"><button class="icon-btn" aria-label="Menu" data-menu><span></span></button></div>
+    <section class="results">
+      <div class="res-head"><span class="eyebrow">Minggunya</span><h2>${esc(gameState.name)}</h2></div>
+
+      <div class="metric">
+        <div class="lbl">⛪ IBADAH RITUAL</div>
+        <div class="pct"><span data-count="${r.ritual}">0</span><sup>%</sup></div>
+        <div class="track"><i data-w="${r.ritual}"></i></div>
+        <p class="desc">Ibadah di gereja dan waktu khusus sama Tuhan: dateng ke PT, pelayanan, persembahan, doa, saat teduh.</p>
+      </div>
+      <div class="metric">
+        <div class="lbl">🌱 IBADAH AKTUAL</div>
+        <div class="pct"><span data-count="${r.aktual}">0</span><sup>%</sup></div>
+        <div class="track"><i data-w="${r.aktual}"></i></div>
+        <p class="desc">Ibadah lewat hidup sehari-hari: dengerin temen, bantu orang tua, ngerjain PR, jujur, peduli sama orang lain.</p>
+      </div>
+      <p class="insight soft" style="margin:4px 2px 0">Kamu pakai <b style="color:var(--cream)">${r.spent} dari 100 kredit</b>. Diam-diam, tiap pilihan makan kredit yang beda: makin banyak kredit yang kamu kasih, makin dekat pilihan itu ke ibadah, entah ritual atau aktual.</p>
+
+      <div class="section-h">Kreditmu ke mana aja</div>
+      <div class="alloc">
+        ${CATS.map(c => `<div class="alloc-row">
+          <div class="alloc-top"><span>${c.label}</span><b>${r.alloc[c.id]}</b></div>
+          <div class="track"><i data-w="${Math.round(100 * r.alloc[c.id] / maxA)}"></i></div>
+        </div>`).join("")}
+        <div class="leftover">Kredit yang nggak kepake: <b>${r.left}</b>. Kredit ini nggak bisa dibawa ke minggu depan.</div>
+      </div>
+
+      <div class="section-h">Catatan buat kamu</div>
+      <p class="insight">${flow}</p>
+      <p class="insight soft">${gap}</p>
+
+      <details class="recap"><summary>Lihat 10 pilihanmu</summary><ol>${recap}</ol></details>
+
+      <div class="closing">
+        <p class="big">Nggak ada skor yang sempurna.</p>
+        <p>Karena pertanyaannya bukan:</p>
+        <p class="q">“Aku udah cukup baik belum?”</p>
+        <p>Tapi:</p>
+        <p class="q gold">“Apa yang kamu lakukan dengan apa yang Tuhan percayakan ke kamu?”</p>
+        <button class="btn btn-primary" data-reflect>RENUNGKAN</button>
+      </div>
+    </section>`);
+  bindMenu();
+
+  requestAnimationFrame(() => setTimeout(() => {
+    document.querySelectorAll("[data-w]").forEach(el => el.style.width = el.dataset.w + "%");
+    document.querySelectorAll("[data-count]").forEach(el => {
+      const to = +el.dataset.count, t0 = performance.now();
+      const step = now => {
+        const p = Math.min(1, (now - t0) / 1300);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, 150));
+  $("[data-reflect]").onclick = renderReflect;
+}
+
+/* ---------- RENUNGAN ---------- */
+function renderReflect() {
+  mount(`<div class="reflect reveal">${stagger([
+    `<p>Selama main tadi, kamu udah pakai waktu, uang, tenaga, perhatian, dan kesempatanmu.</p>`,
+    `<p class="muted">Semuanya terbatas.</p>`,
+    `<p>Dan semuanya itu dipercayakan ke kamu.</p>`,
+    `<p class="q">Apa ibadah cuma yang ritual, waktu kamu ada di gereja?</p>`,
+    `<p class="q">Atau cara kamu ngejalanin hidup sehari-hari juga ibadah, responsmu ke Tuhan?</p>`,
+    `<button class="btn btn-primary" data-sermon>SEKARANG, KITA BAHAS</button>`
+  ])}</div>`, { night: true });
+  $("[data-sermon]").onclick = renderFinal;
+}
+
+/* ---------- PENUTUP: khotbah dimulai ---------- */
+function renderFinal() {
+  mount(`
+    <div class="final">
+      <span class="eyebrow">Bacaan Alkitab</span>
+      <div class="ref">2 TAWARIKH<br>1:1–6</div>
+      <p class="theme">Beribadah sebagai Wujud Kasih dan Syukur kepada Tuhan</p>
+      <div class="rule"></div>
+      <p class="ask">Gimana kita makai apa yang Tuhan percayakan ke kita sebagai wujud kasih dan syukur kepada Tuhan?</p>
+      <p class="foot">Pelkat PT GPIB · 4 Oktober 2026</p>
+    </div>`, { night: true });
+}
+
+/* ---------- MENU ---------- */
+function bindMenu() {
+  document.querySelectorAll("[data-menu]").forEach(b => b.onclick = openMenu);
+}
+function openMenu() {
+  const sheet = $("#sheet"), bg = $("#sheetBg");
+  sheet.innerHTML = `
+    <h3>Menu</h3>
+    <p>Progresmu kesimpen di HP ini. Kalau mulai ulang, semua pilihanmu bakal kehapus.</p>
+    <button class="btn btn-ghost" data-restart>MULAI ULANG</button>
+    <button class="btn btn-primary" data-close>BALIK KE GAME</button>`;
+  sheet.classList.add("on"); bg.classList.add("on");
+  const close = () => { sheet.classList.remove("on"); bg.classList.remove("on"); };
+  bg.onclick = close;
+  sheet.querySelector("[data-close]").onclick = close;
+  const rb = sheet.querySelector("[data-restart]");
+  rb.onclick = () => {
+    if (rb.dataset.confirm) {
+      close(); clearSave(); gameState = null; renderLanding();
+    } else {
+      rb.dataset.confirm = "1";
+      rb.textContent = "YAKIN? TAP SEKALI LAGI";
+      rb.style.borderColor = "var(--gold)";
+      rb.style.color = "var(--gold)";
+    }
+  };
+}
+
+/* ---------- mulai ---------- */
+if (typeof document !== "undefined" && document.getElementById("app")) renderLanding();
+if (typeof module !== "undefined") module.exports = { STORIES, newState, computeResults, MAX_RITUAL, MAX_AKTUAL, KEYMAP, setState: s => { gameState = s; } };
+</script>
+</body>
+</html>
